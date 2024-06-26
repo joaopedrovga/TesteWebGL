@@ -24,14 +24,38 @@
 </head>
 <body>
 
-<div class="wrapper" id="mainarea">
-	<div class="alert alert-warning centered-axis-xy" style="min-height: 20px; display:none;" role="alert" id="compilingmessage">
-		<div id='loadTasks'> </div>
-	</div>
-	<!-- The "tabindex=0" specifier on the canvas is important to allow it to capture keyboard focus when clicking on it with a mouse -->
-	<canvas tabindex=0 id="canvas" class="emscripten" oncontextmenu="event.preventDefault()" style="display:none;">
+	<canvas id="canvas"></canvas>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', (event) => {
+            var canvas = document.getElementById('canvas');
+            
+            // Função para entrar em fullscreen
+            function enterFullscreen() {
+                if (canvas.requestFullscreen) {
+                    canvas.requestFullscreen();
+                } else if (canvas.mozRequestFullScreen) { // Firefox
+                    canvas.mozRequestFullScreen();
+                } else if (canvas.webkitRequestFullscreen) { // Chrome, Safari and Opera
+                    canvas.webkitRequestFullscreen();
+                } else if (canvas.msRequestFullscreen) { // IE/Edge
+                    canvas.msRequestFullscreen();
+                }
+            }
 
-<div class="texthalf text-normal jumbotron " id="logwindow" style='display:none'></div>
+            // Solicitar fullscreen ao carregar a página
+            enterFullscreen();
+
+            // Adicionar evento de clique para tentar entrar em fullscreen novamente se necessário
+            canvas.addEventListener('click', enterFullscreen);
+        });
+
+        // Adicionar script adicional para inicializar seu projeto WebGL
+        // Certifique-se de que o canvas id no script do projeto corresponde ao id do canvas acima
+        var script = document.createElement('script');
+        script.src = 'path/to/your/UE4Game.js'; // Ajuste o caminho conforme necessário
+        document.body.appendChild(script);
+    </script>
+
 
 <script src="TesteWebGL.UE4.js"></script>
 </body>
