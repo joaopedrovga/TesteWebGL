@@ -35,5 +35,32 @@
 <div class="texthalf text-normal jumbotron " id="logwindow" style='display:none'></div>
 
 <script src="TesteWebGL.UE4.js"></script>
+
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', (event) => {
+        var canvas = document.getElementById('canvas');
+
+        // Função para entrar em fullscreen
+        function enterFullscreen() {
+            if (canvas.requestFullscreen) {
+                canvas.requestFullscreen();
+            } else if (canvas.mozRequestFullScreen) { // Firefox
+                canvas.mozRequestFullScreen();
+            } else if (canvas.webkitRequestFullscreen) { // Chrome, Safari and Opera
+                canvas.webkitRequestFullscreen();
+            } else if (canvas.msRequestFullscreen) { // IE/Edge
+                canvas.msRequestFullscreen();
+            }
+        }
+
+        // Solicitar fullscreen ao carregar a página
+        enterFullscreen();
+
+        // Adicionar evento de clique para tentar entrar em fullscreen novamente se necessário
+        canvas.addEventListener('click', enterFullscreen);
+    });
+</script>
+
+
 </body>
 </html>
