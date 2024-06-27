@@ -30,7 +30,7 @@ html, body {
     margin: 1em auto 10px auto;
     text-align: center;
     width: 100%;
-    max-width: 95%;
+    max-width: 100%;
     min-height: 100%; /* Ajusta a altura minima para ocupar toda a tela */
     display: flex;
     flex-direction: column;
